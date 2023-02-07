@@ -1,0 +1,14 @@
+.env
+node_modules
+npm-debug.log.*
+package-lock.json
+/.vs
+iisnode
+*.log
+.sonarlint
+/index.js
+/dist
+/.nyc_output
+/coverage
+yarn.lock
+**/dist
