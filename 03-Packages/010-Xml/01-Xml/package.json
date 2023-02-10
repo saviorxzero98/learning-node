@@ -1,0 +1,22 @@
+{
+  "name": "xml_sample",
+  "version": "1.0.0",
+  "description": "XML Sample",
+  "main": "dist/index.js",
+  "dependencies": {
+    "@types/node": "^16.11.9",
+    "fast-xml-parser": "^3.21.1",
+    "xml-js": "^1.6.11"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc",
+    "watch": "tsc -w",
+    "nodewatch": "nodemon dist/index.js",
+    "start": "node dist/index.js"
+  },
+  "bin": "dist/index.js",
+  "author": "Marty Chen",
+  "license": "MIT"
+}

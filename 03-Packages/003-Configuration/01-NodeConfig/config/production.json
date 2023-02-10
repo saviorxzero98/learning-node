@@ -1,0 +1,31 @@
+{
+    "server": 
+    {
+        "hostUrl": "http://localhost",
+        "port": 3000,
+        "virtualDirPath": ""
+    },
+    "database":
+    {
+        "ConnectorMapping": 
+        {
+            "type": "redis",
+            "hostUrl": "127.0.0.1",
+            "port": 6379,
+            "dbIndex": 0,
+            "auth": ""
+        },
+        "ConversationHistory": 
+        {
+            "type": "redis",
+            "hostUrl": "127.0.0.1",
+            "port": 6379,
+            "dbIndex": 1,
+            "auth": ""
+        }
+    },
+    "appSetting": {
+        "botConfigPath": "../config/botConfig.json"
+    },
+    "buildConfig": "Release"
+}

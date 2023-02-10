@@ -1,0 +1,26 @@
+{
+  "name": "bull_sample",
+  "version": "1.0.0",
+  "description": "Bull Sample",
+  "main": "dist/index.js",
+  "dependencies": {
+    "@bull-board/express": "^4.9.0",
+    "bull": "^4.10.2",
+    "bullmq": "^3.5.0",
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.14",
+    "@types/node": "16.18.6"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc",
+    "watch": "tsc -w",
+    "nodewatch": "nodemon dist/index.js",
+    "start": "node dist/index.js"
+  },
+  "bin": "dist/index.js",
+  "author": "Marty Chen",
+  "license": "MIT"
+}

@@ -1,0 +1,37 @@
+{
+    "server": 
+    {
+        "hostUrl": "http://localhost",
+        "port": 3000,
+        "virtualDirPath": ""
+    },
+    "database":
+    {
+        "ConnectorMapping": 
+        {
+            "type": "redis",
+            "hostUrl": "127.0.0.1",
+            "port": 6379,
+            "dbIndex": 0,
+            "auth": ""
+        },
+        "ConversationHistory": 
+        {
+            "type": "redis",
+            "hostUrl": "127.0.0.1",
+            "port": 6379,
+            "dbIndex": 1,
+            "auth": ""
+        }
+    },
+    "appSetting": {
+        "botConfigPath": "../config/botConfig.json",
+
+        "iotaServer": {
+            "channelUrl": "https://im2.gss.com.tw",
+            "hostName": "im2.gss.com.tw",
+            "apiKey": "5765118d64c29e282d5e25233328d6d577316229426c8fd3"
+        }
+    },
+    "buildConfig": "Debug"
+}

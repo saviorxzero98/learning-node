@@ -1,0 +1,23 @@
+{
+  "name": "uuid_sample",
+  "version": "1.0.0",
+  "description": "UUID",
+  "main": "dist/index.js",
+  "dependencies": {
+    "@types/node": "^10.17.17",
+    "uuid": "^8.3.2"
+  },
+  "devDependencies": {
+    "@types/uuid": "^8.3.4"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc",
+    "watch": "tsc -w",
+    "nodewatch": "nodemon dist/index.js",
+    "start": "node dist/index.js"
+  },
+  "bin": "dist/index.js",
+  "author": "Marty Chen",
+  "license": "MIT"
+}

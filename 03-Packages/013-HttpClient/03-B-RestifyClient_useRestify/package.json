@@ -1,0 +1,22 @@
+{
+  "name": "restify_client_sample",
+  "version": "1.0.0",
+  "description": "Restify Client with Restify Sample",
+  "main": "dist/index.js",
+  "dependencies": {
+    "restify-clients": "^2.5.0",
+    "restify": "^7.2.1",
+    "@types/node": "^10.5.5"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc",
+    "watch": "tsc -w",
+    "nodewatch": "nodemon dist/index.js",
+    "start": "node dist/index.js"
+  },
+  "bin": "dist/index.js",
+  "author": "Marty Chen",
+  "license": "MIT"
+}

@@ -11,4 +11,3 @@ iisnode
 /.nyc_output
 /coverage
 yarn.lock
-**/dist

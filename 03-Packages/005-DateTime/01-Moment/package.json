@@ -1,0 +1,22 @@
+{
+  "name": "moment_sample",
+  "version": "1.0.0",
+  "description": "Moment Sample",
+  "main": "dist/index.js",
+  "dependencies": {
+    "moment": "^2.22.2",
+    "@types/node": "^10.5.5",
+    "@types/moment": "^2.13.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc",
+    "watch": "tsc -w",
+    "nodewatch": "nodemon dist/index.js",
+    "start": "node dist/index.js"
+  },
+  "bin": "dist/index.js",
+  "author": "Marty Chen",
+  "license": "MIT"
+}

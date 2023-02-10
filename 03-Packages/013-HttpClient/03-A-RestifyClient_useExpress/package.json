@@ -1,0 +1,23 @@
+{
+  "name": "restify_with_express_sample",
+  "version": "1.0.0",
+  "description": "Restify Client with Express",
+  "main": "dist/index.js",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.3",
+    "restify-clients": "^2.5.0",
+    "@types/node": "^10.5.5"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc",
+    "watch": "tsc -w",
+    "nodewatch": "nodemon dist/index.js",
+    "start": "node dist/index.js"
+  },
+  "bin": "dist/index.js",
+  "author": "Marty Chen",
+  "license": "MIT"
+}

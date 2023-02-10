@@ -1,0 +1,22 @@
+[
+    {
+        "botId": "mybot1",
+        "botName": "mybot1",
+        "botUrl": "http://localhost:3979/api/messages",
+        "authentication": 
+        {
+            "msaAppId": "",
+            "msaPassword": ""
+        }
+    },
+    {
+        "botId":"mybot2",
+        "botName": "mybot2",
+        "botUrl":"http://localhost:3978/api/messages",
+        "authentication": 
+        {
+            "msaAppId": "",
+            "msaPassword": ""
+        }
+    }
+]

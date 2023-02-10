@@ -1,0 +1,23 @@
+{
+  "name": "janusgraph-sample",
+  "version": "1.0.0",
+  "description": "JanusGraph",
+  "main": "dist/index.js",
+  "dependencies": {
+    "gremlin": "^3.5.1"
+  },
+  "devDependencies": {
+    "@types/gremlin": "^3.5.0",
+    "@types/node": "^16.11.2"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc",
+    "watch": "tsc -w",
+    "nodewatch": "nodemon dist/index.js",
+    "start": "node dist/index.js"
+  },
+  "bin": "dist/index.js",
+  "author": "Marty Chen",
+  "license": "MIT"
+}

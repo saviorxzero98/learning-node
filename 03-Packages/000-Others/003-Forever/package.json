@@ -1,0 +1,23 @@
+{
+  "name": "forever_sample",
+  "version": "1.0.0",
+  "description": "Forever Sample",
+  "main": "dist/cmdUtil.js",
+  "dependencies": {
+    "forever": "^0.15.3",
+    "forever-monitor": "^1.7.1",
+    "@types/node": "^10.5.4",
+    "@types/forever-monitor": "^1.7.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc",
+    "watch": "tsc -w",
+    "nodewatch": "nodemon dist/cmdUtil.js",
+    "start": "node dist/cmdUtil.js"
+  },
+  "bin": "dist/cmdUtil.js",
+  "author": "Marty Chen",
+  "license": "MIT"
+}

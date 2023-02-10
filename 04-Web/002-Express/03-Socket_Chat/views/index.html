@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <style>
+        .card {
+            /* Add shadows to create the "card" effect */
+            background: #FFFFFF;
+            box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+            transition: 0.3s;
+            padding-bottom:20px;
+            text-align:left;
+            overflow:auto;
+        }
+    </style>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+</head>
+
+<body bgcolor="#E6E6E6">
+    <script>
+        var gSocket = io.connect('http://localhost:3000');
+        gSocket.on('hello-client', function (data) {
+            appendChatview(data.user + "：" + data.message);
+        });
+
+        function sendMessage() {
+            var inputMessage = {
+                user: "User",
+                message: $("#inputText").val(),
+            };
+            $("#inputText").val("");
+
+            appendChatview(inputMessage.user + "：" + inputMessage.message);
+
+            var socket = io.connect('http://localhost:3000');
+            socket.emit('send-message-to-server', inputMessage);
+
+            socket.on('send-message-to-client', function (data) {
+                appendChatview(data.user + "：" + data.message);
+            });
+        }
+
+        function appendChatview(message) {
+            var orgText = $("#chatview").text();
+            $("#chatview").text(orgText + "\n" + message);
+        }
+
+        $(document).keypress(function(e) {
+            if(e.which == 13) {
+                if($("#inputText").val() !== "") {
+                    sendMessage();
+                }
+            }
+        });
+    </script>
+    <center>
+        <div class="card" style="height:500px; width:500px;">
+            <pre id="chatview" style="font-size:16px; margin:0 10px 10px 20px;" readonly></pre><br />
+        </div>
+        <input type="text" id="inputText" style="width: 445px; margin-top:20px;"></input>
+        <input type="button" id="inputSend" style="width:50px; margin-top:20px;" value="送出" onclick="sendMessage()"></input>
+    </center>
+</body>
+
+</html>

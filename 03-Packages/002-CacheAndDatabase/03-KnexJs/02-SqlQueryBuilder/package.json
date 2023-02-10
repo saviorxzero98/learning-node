@@ -1,0 +1,28 @@
+{
+  "name": "knex_playground",
+  "version": "1.0.0",
+  "description": "Knex Playground",
+  "main": "dist/index.js",
+  "dependencies": {
+    "better-sqlite3": "^7.6.2",
+    "knex": "^2.2.0",
+    "mssql": "^9.0.1",
+    "mysql": "^2.18.1",
+    "pg": "^8.8.0",
+    "sqlite3": "^5.0.11"
+  },
+  "devDependencies": {
+    "@types/node": "^18.7.14",
+    "@types/sqlite3": "^3.1.8"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc",
+    "watch": "tsc -w",
+    "nodewatch": "nodemon dist/index.js",
+    "start": "node dist/index.js"
+  },
+  "bin": "dist/index.js",
+  "author": "Marty Chen",
+  "license": "MIT"
+}

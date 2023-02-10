@@ -1,0 +1,22 @@
+{
+  "name": "jade_sample",
+  "version": "1.0.0",
+  "description": "Jade Sample",
+  "main": "dist/index.js",
+  "dependencies": {
+    "express": "^4.16.3",
+    "jade": "^1.11.0",
+    "@types/node": "^10.5.5"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc",
+    "watch": "tsc -w",
+    "nodewatch": "nodemon dist/index.js",
+    "start": "node dist/index.js"
+  },
+  "bin": "dist/index.js",
+  "author": "Marty Chen",
+  "license": "MIT"
+}

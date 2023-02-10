@@ -1,0 +1,50 @@
+{
+    "name": "mocha_chai_sample",
+    "version": "1.0.0",
+    "description": "Mocha Chai Sample",
+    "main": "dist/index.js",
+    "dependencies": {
+        "@types/node": "^10.5.5"
+    },
+    "devDependencies": {
+        "@types/chai": "^4.2.1",
+        "@types/mocha": "^5.2.7",
+        "chai": "^4.2.0",
+        "mocha": "^6.2.0",
+        "nyc": "^14.1.1",
+        "sinon": "^9.0.3",
+        "ts-node": "^8.3.0",
+        "typescript": "^3.6.2"
+    },
+    "scripts": {
+        "test": "mocha --require ts-node/register test/**/*.ts",
+        "coverage": "nyc mocha --require ts-node/register test/**/*.ts",
+        "build": "tsc",
+        "watch": "tsc -w",
+        "nodewatch": "nodemon dist/index.js",
+        "start": "node dist/index.js"
+    },
+    "bin": "dist/index.js",
+    "author": "Marty Chen",
+    "license": "MIT",
+    "nyc": {
+        "include": [
+            "src/**/*.ts",
+            "src/**/*.tsx"
+        ],
+        "extension": [
+            ".ts",
+            ".tsx"
+        ],
+        "require": [
+            "ts-node/register"
+        ],
+        "reporter": [
+            "text",
+            "text-summary",
+            "html"
+        ],
+        "sourceMap": true,
+        "instrument": true
+    }
+}
