@@ -6,7 +6,23 @@
 
 
 
-## 使用
+## 1. 安裝
+
+* NPM
+
+```shell
+npm install elastic-apm-node
+```
+
+* Yarn
+
+```shell
+yarn add elastic-apm-node
+```
+
+
+
+## 2. 使用
 
 * 以下程式需放在最上面
     * 在 import 套件和啟用 Express Server 之前
