@@ -3,6 +3,8 @@ import * as xmlparser from 'express-xml-bodyparser';
 import * as path from 'path';
 import * as fs from 'fs';
 import * as loki from 'lokijs';
+import * as swaggerUi from 'swagger-ui-express';
+const swaggerDocument = require('../swagger.json');
 
 // 建立 Express
 const app = express();
@@ -11,6 +13,7 @@ const app = express();
 app.use(express.json());                             // for parsing application/json
 app.use(express.urlencoded({ extended: true }));     // for parsing application/x-www-form-urlencoded
 app.use(xmlparser());                                // for parsing application/xml
+app.use('/api/doc', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 // 設定靜態 HTML
 let webPath = process.cwd();

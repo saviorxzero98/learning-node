@@ -5,12 +5,15 @@ const xmlparser = require("express-xml-bodyparser");
 const path = require("path");
 const fs = require("fs");
 const loki = require("lokijs");
+const swaggerUi = require("swagger-ui-express");
+const swaggerDocument = require('../swagger.json');
 // 建立 Express
 const app = express();
 // 設定 Body Parser
 app.use(express.json()); // for parsing application/json
 app.use(express.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
 app.use(xmlparser()); // for parsing application/xml
+app.use('/api/doc', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 // 設定靜態 HTML
 let webPath = process.cwd();
 let webrootPath = path.join(webPath, '/wwwroot');
