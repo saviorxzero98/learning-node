@@ -3,7 +3,9 @@
 	"version": "1.0.0",
 	"description": "Typescript Decorator Sample",
 	"main": "dist/index.js",
-	"dependencies": {},
+	"dependencies": {
+		"reflect-metadata": "^0.1.13"
+	},
 	"devDependencies": {
 		"@types/node": "^16.18.6"
 	},
