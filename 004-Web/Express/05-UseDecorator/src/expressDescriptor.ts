@@ -17,8 +17,8 @@ export const Controller = (path: string = ''): ClassDecorator => {
 }
 
 export const createHttpActionMappingDecorator = (method: string = 'get') => (path: string = ''): MethodDecorator => {
-    return (target, propertyKey, descriptor) => {
-        Reflect.defineMetadata(METHOD_METADATA, { method, path }, descriptor.value);
+    return (target, propertyKey, decorator) => {
+        Reflect.defineMetadata(METHOD_METADATA, { method, path }, decorator.value);
     }
 }
 

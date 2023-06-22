@@ -1,5 +1,4 @@
 import { Controller, HttpGet, HttpPost, HttpPut, HttpDelete } from './expressDescriptor';
-import * as loki from 'lokijs';
 import { InMemoryDatabase } from './memoryDatabase';
 
 @Controller('/api')
