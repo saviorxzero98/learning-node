@@ -20,7 +20,7 @@ function OutputView({ value }) {
 
 
 export default function Calculator() {
-  const [outValue, setoutValue] = useState(0);
+  const [outValue, setOutValue] = useState(0);
   const [isFloat, setIsFloat] = useState(false);
   const [isNewValue, setIsNewValue] = useState(true);
   const [lastOp, setLastOp] = useState('');
@@ -29,7 +29,7 @@ export default function Calculator() {
   function clickNumber(value) {
     if (!isNaN(value)) {
       if (isNewValue) {
-        setoutValue(value);
+        setOutValue(value);
         setIsNewValue(false);
         return;
       }
@@ -37,49 +37,55 @@ export default function Calculator() {
       var floatValue = String(outValue);
       if (isFloat) {
         if (floatValue.includes('.')) {
-          setoutValue(Number(`${floatValue}${value}`));
+          setOutValue(Number(`${floatValue}${value}`));
         }
         else {
-          setoutValue(Number(`${floatValue}.${value}`));
+          setOutValue(Number(`${floatValue}.${value}`));
         }
       }
       else {
         if (floatValue.includes('.')) {
-          setoutValue(Number(`${floatValue}${value}`));
+          setOutValue(Number(`${floatValue}${value}`));
         }
         else {
-          setoutValue(outValue * 10 + value);
+          setOutValue(outValue * 10 + value);
         }
       }
     }
   }
-  function clickReset() {
-    setoutValue(0);
+  function clickClear(isClearAll = false) {
+    setOutValue(0);
     setIsFloat(false);
+    setIsNewValue(true);
+    
+    if (isClearAll) {
+      setLastOp('');
+      setTempValue(0);
+    }
   }
   function clickPercent() {
-    setoutValue(outValue / 100);
+    setOutValue(outValue / 100);
   }
   function clickNegative() {
-    setoutValue(outValue * -1);
+    setOutValue(outValue * -1);
   }
   function clickSqrt() {
-    setoutValue(Math.sqrt(outValue));
+    setOutValue(Math.sqrt(outValue));
   }
   function clickPower() {
-    setoutValue(Math.pow(outValue, 2));
+    setOutValue(Math.pow(outValue, 2));
   }
   function clickReciprocal() {
-    setoutValue(1/outValue);
+    setOutValue(1/outValue);
   }
   function clickBackspace() {
     let value = String(outValue).slice(0, -1);
 
     if (!isNaN(value)) {
-      setoutValue(Number(value));
+      setOutValue(Number(value));
     }
     else {
-      setoutValue(0);
+      setOutValue(0);
     }    
   }
   function clickFloat() {
@@ -93,7 +99,7 @@ export default function Calculator() {
       case "÷":
         if (lastOp) {
           let currentValue = calc(tempValue, outValue, lastOp);
-          setoutValue(currentValue);
+          setOutValue(currentValue);
           setLastOp(op);
           setTempValue(currentValue);
           setIsNewValue(true);
@@ -107,7 +113,7 @@ export default function Calculator() {
 
       case "=":
         if (lastOp) {
-          setoutValue(calc(tempValue, outValue, lastOp));
+          setOutValue(calc(tempValue, outValue, lastOp));
           setLastOp('');
           setTempValue(0);
           setIsNewValue(true);
@@ -134,8 +140,8 @@ export default function Calculator() {
       <OutputView value={outValue} />
       <div className="calcKey-row">
         <Key value={"%"} onClick={() => clickPercent()} />
-        <Key value={"CE"} onClick={() => clickReset()} />
-        <Key value={"C"} onClick={() => clickReset()} />
+        <Key value={"CE"} onClick={() => clickClear(false)} />
+        <Key value={"C"} onClick={() => clickClear(true)} />
         <Key value={"←"} onClick={() => clickBackspace()} />
       </div>
       <div className="calcKey-row">
