@@ -1,5 +1,5 @@
 'use client'
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 enum SquareType {
   Empty = '　',
@@ -31,7 +31,7 @@ export default function Board() {
   const [squareCount, setSquareCount] = useState(0);
   const [squares, setSquares] = useState(Array(9).fill(SquareType.Empty));
 
-  
+
   let status = "玩家: " + (xIsNext ? SquareType.X : SquareType.O);
   const winner = calculateWinner(squares);
   if (winner) {
@@ -40,6 +40,10 @@ export default function Board() {
   else if (squareCount === squares.length) {
     status = "和局";
   }
+
+  useEffect(() => {
+    document.title = status;
+  });
 
   function handleClick(i) {
     if (calculateWinner(squares)) {
