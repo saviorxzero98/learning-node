@@ -183,7 +183,7 @@ export class SymmetricKeyCryptoHelper {
         if (key) {
             const keyLength = this.getKeyLength();
             const ivLength = this.getIvLength();
-            const salt = 'gss-bot-connector';
+            const salt = '';
 
             // Key
             let keyBuffer: Buffer;

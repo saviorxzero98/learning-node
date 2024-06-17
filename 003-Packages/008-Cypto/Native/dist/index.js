@@ -14,12 +14,16 @@ fromHex(hexString);
 console.log('\n====================\n[Demo Hash]');
 runHashHex(text, 'md5', 'MD5 (Hex)');
 runHashBase64(text, 'md5', 'MD5 (Base64)');
+runHashBase64Url(text, 'md5', 'MD5 (Base64 Url)');
 runHashHex(text, 'sha1', 'SHA1 (Hex)');
 runHashBase64(text, 'sha1', 'SHA1 (Base64)');
+runHashBase64Url(text, 'sha1', 'SHA1 (Base64 Url)');
 runHashHex(text, 'sha256', 'SHA256 (Hex)');
 runHashBase64(text, 'sha256', 'SHA256 (Base64)');
+runHashBase64Url(text, 'sha256', 'SHA256 (Base64 Url)');
 runHashHex(text, 'sha512', 'SHA512 (Hex)');
 runHashBase64(text, 'sha512', 'SHA512 (Base64)');
+runHashBase64Url(text, 'sha512', 'SHA512 (Base64 Url)');
 // HMAC
 console.log('\n====================\n[Demo Hmac]');
 const hmacKey = 'P@ssw0rd';
@@ -102,6 +106,17 @@ function runHashBase64(plainText, algroithm, title) {
     let startTime = new Date();
     // HASH
     let crypto = new cyptoHelper_1.HashCryptoHelper(algroithm).setCiphertextEncoding('base64');
+    let hashText = crypto.hash(plainText);
+    let endTime = new Date();
+    let times = endTime.getTime() - startTime.getTime();
+    console.log(`${title} : ${hashText} (${times} ms)`);
+    return hashText;
+}
+/** Hash */
+function runHashBase64Url(plainText, algroithm, title) {
+    let startTime = new Date();
+    // HASH
+    let crypto = new cyptoHelper_1.HashCryptoHelper(algroithm).setCiphertextEncoding('base64url');
     let hashText = crypto.hash(plainText);
     let endTime = new Date();
     let times = endTime.getTime() - startTime.getTime();

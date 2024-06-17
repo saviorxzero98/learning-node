@@ -58,7 +58,7 @@ var HashAlgroithmType;
     HashAlgroithmType["sha256"] = "sha256";
     HashAlgroithmType["sha384"] = "sha384";
     HashAlgroithmType["sha512"] = "sha512";
-})(HashAlgroithmType = exports.HashAlgroithmType || (exports.HashAlgroithmType = {}));
+})(HashAlgroithmType || (exports.HashAlgroithmType = HashAlgroithmType = {}));
 /** 雜湊處理 */
 class HashCryptoHelper {
     constructor(algroithm = HashAlgroithmType.sha256) {
@@ -122,7 +122,7 @@ var SymmetricKeyAlgroithmType;
     SymmetricKeyAlgroithmType["aes256_ctr"] = "aes-256-ctr";
     SymmetricKeyAlgroithmType["aes256_gcm"] = "aes-256-gcm";
     SymmetricKeyAlgroithmType["aes256_xts"] = "aes-256-xts";
-})(SymmetricKeyAlgroithmType = exports.SymmetricKeyAlgroithmType || (exports.SymmetricKeyAlgroithmType = {}));
+})(SymmetricKeyAlgroithmType || (exports.SymmetricKeyAlgroithmType = SymmetricKeyAlgroithmType = {}));
 /** 對稱式金鑰加解密處理 */
 class SymmetricKeyCryptoHelper {
     constructor(algorithm = SymmetricKeyAlgroithmType.aes256_cbc) {
@@ -145,7 +145,7 @@ class SymmetricKeyCryptoHelper {
         if (key) {
             const keyLength = this.getKeyLength();
             const ivLength = this.getIvLength();
-            const salt = 'gss-bot-connector';
+            const salt = '';
             // Key
             let keyBuffer;
             if (key instanceof Buffer) {
