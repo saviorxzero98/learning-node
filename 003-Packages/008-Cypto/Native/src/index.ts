@@ -245,7 +245,7 @@ function runCipher(plainText: string, password: string, algorithm: string, title
     
     let cypto = new SymmetricKeyCryptoHelper(algorithm).setCiphertextEncoding('hex')
                                                  .setPlainTextEncoding('utf-8')
-                                                 .setKeyAndIv(password);
+                                                 .setKeyAndIvString(password);
     let ciphertext = cypto.encrypt(plainText);
 
     let endTime = new Date();
@@ -278,7 +278,7 @@ function runDecipher(ciphertext: string, password: string, algorithm: string, ti
     
     let cypto = new SymmetricKeyCryptoHelper(algorithm).setCiphertextEncoding('hex')
                                                  .setPlainTextEncoding('utf-8')
-                                                 .setKeyAndIv(password);
+                                                 .setKeyAndIvString(password);
     let plainText = cypto.decrypt(ciphertext);
 
     let endTime = new Date();

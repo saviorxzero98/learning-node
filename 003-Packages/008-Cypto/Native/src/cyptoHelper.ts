@@ -179,34 +179,47 @@ export class SymmetricKeyCryptoHelper {
     }
 
     /** Set key and iv */
-    public setKeyAndIv(key: string | Buffer, iv ?: string | Buffer): SymmetricKeyCryptoHelper {
+    public setKeyAndIv(key: Buffer, iv ?: Buffer, saltText ?: string): SymmetricKeyCryptoHelper {
         if (key) {
             const keyLength = this.getKeyLength();
             const ivLength = this.getIvLength();
-            const salt = '';
+            const salt = saltText || 'demo';
 
             // Key
-            let keyBuffer: Buffer;
-            if (key instanceof Buffer) {
-                keyBuffer = Buffer.concat([key, Buffer.alloc(keyLength)], keyLength);
-            }
-            else {
-                let keyHash = crypto.pbkdf2Sync(key, salt, 1, keyLength, HashAlgroithmType.sha256);
-                keyBuffer = Buffer.from(keyHash);
-            }
+            let keyBuffer = Buffer.concat([key, Buffer.alloc(keyLength)], keyLength);
             this.key = keyBuffer.subarray(0, keyLength);
 
 
             // IV
             if (iv) {
-                let ivBuffer: Buffer;
-                if (iv instanceof Buffer) {
-                    ivBuffer = Buffer.concat([iv, Buffer.alloc(ivLength)], ivLength);
-                }
-                else {
-                    let ivHash = crypto.pbkdf2Sync(iv, salt, 1, ivLength, HashAlgroithmType.sha256);
-                    ivBuffer = Buffer.from(ivHash);
-                }
+                let ivBuffer = Buffer.concat([iv, Buffer.alloc(ivLength)], ivLength);
+                this.iv = ivBuffer.subarray(0, ivLength);
+            }
+            else {
+                let ivHash = crypto.pbkdf2Sync(this.key, salt, 1, ivLength, HashAlgroithmType.sha256);
+                this.iv = Buffer.from(ivHash);
+            }
+        }
+        return this;
+    }
+
+    /** Set key and iv from String */
+    public setKeyAndIvString(keyText: string, ivText ?: string, saltText ?: string): SymmetricKeyCryptoHelper {
+        if (keyText) {
+            const keyLength = this.getKeyLength();
+            const ivLength = this.getIvLength();
+            const salt = saltText || 'demo';
+
+            // Key
+            let keyHash = crypto.pbkdf2Sync(keyText, salt, 1, keyLength, HashAlgroithmType.sha256);
+            let keyBuffer = Buffer.from(keyHash);
+            this.key = keyBuffer.subarray(0, keyLength);
+
+
+            // IV
+            if (ivText) {
+                let ivHash = crypto.pbkdf2Sync(ivText, salt, 1, ivLength, HashAlgroithmType.sha256);
+                let ivBuffer = Buffer.from(ivHash);
                 this.iv = ivBuffer.subarray(0, ivLength);
             }
             else {
