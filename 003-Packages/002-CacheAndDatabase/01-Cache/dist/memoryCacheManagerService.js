@@ -9,21 +9,24 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.NodeCacheService = void 0;
-const NodeCache = require("node-cache");
-class NodeCacheService {
-    constructor() {
-        this._cache = new NodeCache();
+exports.MemoryCacheManagerService = void 0;
+const cache_manager_1 = require("cache-manager");
+class MemoryCacheManagerService {
+    constructor(cache) {
+        this._cache = cache;
     }
-    static getInstance() {
-        if (this._instance == undefined) {
-            this._instance = new NodeCacheService();
-        }
-        return this._instance;
+    static getInstanceAsync() {
+        return __awaiter(this, void 0, void 0, function* () {
+            if (this._instance == undefined) {
+                const memoryCache = yield (0, cache_manager_1.caching)('memory');
+                this._instance = new MemoryCacheManagerService(memoryCache);
+            }
+            return this._instance;
+        });
     }
     tryGetAsync(key, callback, ttl) {
         return __awaiter(this, void 0, void 0, function* () {
-            let value = this._cache.get(key);
+            let value = yield this._cache.get(key);
             if (value) {
                 return value;
             }
@@ -37,22 +40,25 @@ class NodeCacheService {
         });
     }
     getAsync(key) {
-        let self = this;
-        return new Promise((resolve) => {
-            resolve(self._cache.get(key));
+        return __awaiter(this, void 0, void 0, function* () {
+            return yield this._cache.get(key);
         });
     }
     setAsync(key, value, ttl) {
-        if (ttl) {
-            this._cache.set(key, value, ttl);
-        }
-        else {
-            this._cache.set(key, value);
-        }
+        return __awaiter(this, void 0, void 0, function* () {
+            if (ttl) {
+                yield this._cache.set(key, value, ttl);
+            }
+            else {
+                yield this._cache.set(key, value);
+            }
+        });
     }
     deleteAsync(key) {
-        this._cache.del(key);
+        return __awaiter(this, void 0, void 0, function* () {
+            yield this._cache.del(key);
+        });
     }
 }
-exports.NodeCacheService = NodeCacheService;
-//# sourceMappingURL=nodeCacheService.js.map
+exports.MemoryCacheManagerService = MemoryCacheManagerService;
+//# sourceMappingURL=memoryCacheManagerService.js.map

@@ -1,10 +1,11 @@
-export declare class NodeCacheService {
+import { ICacheService } from "./ICacheService";
+export declare class NodeCacheService implements ICacheService {
     private static _instance;
     private _cache;
     constructor();
     static getInstance(): NodeCacheService;
-    tryGetAsync<T>(key: string, callback: () => Promise<T | undefined>, ttl?: number | string | undefined): Promise<T | undefined>;
-    get<T>(key: string): T | undefined;
-    set<T>(key: string, value: T, ttl?: number | string | undefined): void;
-    delete(key: string): void;
+    tryGetAsync<T>(key: string, callback: () => Promise<T | undefined>, ttl?: number | undefined): Promise<T | undefined>;
+    getAsync<T>(key: string): Promise<T | undefined>;
+    setAsync<T>(key: string, value: T, ttl?: number | undefined): void;
+    deleteAsync(key: string): void;
 }

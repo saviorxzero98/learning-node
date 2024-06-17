@@ -9,30 +9,43 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const cacheManagerService_1 = require("./cacheManagerService");
+const memoryCacheManagerService_1 = require("./memoryCacheManagerService");
 const nodeCacheService_1 = require("./nodeCacheService");
+const sqliteCacheManagerService_1 = require("./sqliteCacheManagerService");
 let demoNodeCache = () => __awaiter(void 0, void 0, void 0, function* () {
     const cacheService = nodeCacheService_1.NodeCacheService.getInstance();
     let key = 'keyA';
     let value = '123abc';
     console.log(`[node-cache] Set - Key: ${key}, Value: ${value}`);
-    cacheService.set(key, value);
+    yield cacheService.setAsync(key, value);
     setTimeout(() => {
-        let storedValue = cacheService.get(key);
+        let storedValue = cacheService.getAsync(key);
         console.log(`[node-cache] Get - Key: ${key}, Value: ${storedValue}`);
     }, 3000);
 });
-let demoCacheManager = () => __awaiter(void 0, void 0, void 0, function* () {
-    const cacheService = yield cacheManagerService_1.CacheManagerService.getInstanceAsync();
+let demoMemoryCacheManager = () => __awaiter(void 0, void 0, void 0, function* () {
+    const cacheService = yield memoryCacheManagerService_1.MemoryCacheManagerService.getInstanceAsync();
     let key = 'keyB';
     let value = '123abc';
-    console.log(`[cache-manager] Set - Key: ${key}, Value: ${value}`);
+    console.log(`[cache-manager (Memory)] Set - Key: ${key}, Value: ${value}`);
     yield cacheService.setAsync(key, value);
     setTimeout(() => __awaiter(void 0, void 0, void 0, function* () {
         let storedValue = yield cacheService.getAsync(key);
-        console.log(`[cache-manager] Get - Key: ${key}, Value: ${storedValue}`);
+        console.log(`[cache-manager (Memory)] Get - Key: ${key}, Value: ${storedValue}`);
+    }), 3000);
+});
+let demoSqliteCacheManager = () => __awaiter(void 0, void 0, void 0, function* () {
+    const cacheService = yield sqliteCacheManagerService_1.SqliteCacheManagerService.getInstanceAsync();
+    let key = 'keyB';
+    let value = '123abc';
+    console.log(`[cache-manager (SQLite)] Set - Key: ${key}, Value: ${value}`);
+    yield cacheService.setAsync(key, value);
+    setTimeout(() => __awaiter(void 0, void 0, void 0, function* () {
+        let storedValue = yield cacheService.getAsync(key);
+        console.log(`[cache-manager (SQLite)] Get - Key: ${key}, Value: ${storedValue}`);
     }), 3000);
 });
 demoNodeCache().then(() => { });
-demoCacheManager().then(() => { });
+demoMemoryCacheManager().then(() => { });
+//demoSqliteCacheManager().then(() => {});
 //# sourceMappingURL=index.js.map

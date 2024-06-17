@@ -1,6 +1,7 @@
 import * as NodeCache from "node-cache";
+import { ICacheService } from "./ICacheService";
 
-export class NodeCacheService {
+export class NodeCacheService implements ICacheService {
     private static _instance: NodeCacheService;
     private _cache: NodeCache;
 
@@ -16,7 +17,7 @@ export class NodeCacheService {
     }
 
     public async tryGetAsync<T>(key: string, callback: () => Promise<T | undefined>, 
-                           ttl ?: number | string | undefined): Promise<T | undefined> {
+                           ttl ?: number | undefined): Promise<T | undefined> {
         let value = this._cache.get<T>(key);
         if (value) {
             return value;
@@ -25,17 +26,21 @@ export class NodeCacheService {
             if (callback) {
                 value = await callback();
 
-                this.set(key, value, ttl);
+                await this.setAsync(key, value, ttl);
             }
             return value;
         }
     }
 
-    public get<T>(key: string): T | undefined {
-        return this._cache.get<T>(key);
+    public getAsync<T>(key: string): Promise<T | undefined> {
+        let self = this;
+
+        return new Promise<T | undefined>((resolve) => {
+            resolve(self._cache.get<T>(key));
+        })
     }
 
-    public set<T>(key: string, value: T, ttl ?: number | string | undefined) {
+    public setAsync<T>(key: string, value: T, ttl ?: number | undefined) {
         if (ttl) {
             this._cache.set(key, value, ttl);
         }
@@ -44,7 +49,7 @@ export class NodeCacheService {
         }
     }
 
-    public delete(key: string) {
+    public deleteAsync(key: string) {
         this._cache.del(key);
     }
 }
