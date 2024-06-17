@@ -1,0 +1,22 @@
+{
+	"name": "camelcase_keys",
+	"version": "1.0.0",
+	"description": "camelcase keys",
+	"main": "dist/index.js",
+	"dependencies": {
+		"camelcase-keys": "7.0.2"
+	},
+	"devDependencies": {
+		"@types/node": "^14.0.14"
+	},
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"build": "tsc",
+		"watch": "tsc -w",
+		"nodewatch": "nodemon dist/index.js",
+		"start": "node dist/index.js"
+	},
+	"bin": "dist/index.js",
+	"author": "Marty Chen",
+	"license": "MIT"
+}
