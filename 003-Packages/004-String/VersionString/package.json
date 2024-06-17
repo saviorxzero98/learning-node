@@ -1,0 +1,22 @@
+{
+  "name": "version_sample",
+  "version": "1.0.0",
+  "description": "Version Sample",
+  "main": "dist/index.js",
+  "dependencies": {
+    "@types/node": "^13.11.1",
+    "compare-versions": "^3.6.0",
+    "semver": "^7.3.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc",
+    "watch": "tsc -w",
+    "nodewatch": "nodemon dist/index.js",
+    "start": "node dist/index.js"
+  },
+  "bin": "dist/index.js",
+  "author": "Marty Chen",
+  "license": "MIT"
+}
