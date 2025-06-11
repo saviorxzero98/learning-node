@@ -1,0 +1,22 @@
+{
+	"name": "cheerio_sample",
+	"version": "1.0.0",
+	"description": "Cheerio Sample",
+	"main": "dist/index.js",
+	"dependencies": {
+		"cheerio": "1.0.0-rc.12"
+	},
+	"devDependencies": {
+		"@types/node": "^14.0.14"
+	},
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"build": "tsc",
+		"watch": "tsc -w",
+		"nodewatch": "nodemon dist/index.js",
+		"start": "node dist/index.js"
+	},
+	"bin": "dist/index.js",
+	"author": "Marty Chen",
+	"license": "MIT"
+}
